@@ -189,7 +189,7 @@ export function TasksPage() {
     const assignee = task.assignee_id ? profiles[task.assignee_id] : null;
     const editable = canEdit(task);
     return (
-      <div className="glass rounded-xl p-3.5 group cursor-pointer hover:border-white/12 transition-smooth animate-scale-in">
+      <div className="card-premium rounded-xl p-3.5 group cursor-pointer hover:border-white/12 transition-smooth animate-scale-in">
         <div className="flex items-start justify-between gap-2 mb-2">
           <div className="flex items-center gap-2 min-w-0 flex-1">
             <span className={`${pCol.dot} status-dot flex-shrink-0`} />
@@ -249,8 +249,8 @@ export function TasksPage() {
         </div>
         <div className="flex items-center gap-2">
           <div className="flex bg-white/5 rounded-xl p-1">
-            <button onClick={() => setView('board')} className={`px-3 py-1.5 rounded-lg text-xs transition-smooth ${view === 'board' ? 'bg-teal-500/20 text-teal-300' : 'text-slate-400'}`}>Board</button>
-            <button onClick={() => setView('list')} className={`px-3 py-1.5 rounded-lg text-xs transition-smooth ${view === 'list' ? 'bg-teal-500/20 text-teal-300' : 'text-slate-400'}`}>List</button>
+            <button onClick={() => setView('board')} className={`px-3 py-1.5 rounded-lg text-xs transition-smooth ${view === 'board' ? 'bg-indigo-500/20 text-indigo-300' : 'text-slate-400'}`}>Board</button>
+            <button onClick={() => setView('list')} className={`px-3 py-1.5 rounded-lg text-xs transition-smooth ${view === 'list' ? 'bg-indigo-500/20 text-indigo-300' : 'text-slate-400'}`}>List</button>
           </div>
           <button onClick={openCreate} className="btn-primary px-4 py-2 rounded-xl text-sm flex items-center gap-2">
             <Plus size={16} /> New Task
@@ -285,9 +285,9 @@ export function TasksPage() {
       </div>
 
       {filteredTasks.length === 0 ? (
-        <div className="glass rounded-2xl p-12 text-center animate-fade-in-up stagger-2">
-          <div className="w-16 h-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-4">
-            <CheckSquare className="text-teal-400" size={32} />
+        <div className="card-premium rounded-2xl p-12 text-center animate-fade-in-up stagger-2">
+          <div className="w-16 h-16 rounded-2xl bg-indigo-500/10 flex items-center justify-center mx-auto mb-4">
+            <CheckSquare className="text-indigo-400" size={32} />
           </div>
           <h3 className="text-lg font-semibold text-white mb-2">No tasks found</h3>
           <p className="text-slate-400 text-sm mb-6">Create a task to get started</p>
@@ -302,7 +302,7 @@ export function TasksPage() {
             const sCol = statusColor(status);
             return (
               <div key={status} className="animate-fade-in-up" style={{ animationDelay: `${colIdx * 0.05}s` }}>
-                <div className="glass rounded-2xl p-3 h-full min-h-[200px]">
+                <div className="card-premium rounded-2xl p-3 h-full min-h-[200px]">
                   <div className="flex items-center justify-between mb-3 px-1">
                     <div className="flex items-center gap-2">
                       <span className={sCol.dot + ' status-dot'} />
@@ -345,7 +345,7 @@ export function TasksPage() {
             const proj = projects.find((p) => p.id === task.project_id);
             const assignee = task.assignee_id ? profiles[task.assignee_id] : null;
             return (
-              <div key={task.id} className="glass rounded-xl p-3.5 flex items-center gap-3 group hover:border-white/12 transition-smooth">
+              <div key={task.id} className="card-premium rounded-xl p-3.5 flex items-center gap-3 group hover:border-white/12 transition-smooth">
                 <span className={`${pCol.dot} status-dot flex-shrink-0`} />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm text-white font-medium truncate">{task.title}</p>

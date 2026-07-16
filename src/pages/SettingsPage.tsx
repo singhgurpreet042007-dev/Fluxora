@@ -166,7 +166,7 @@ export function SettingsPage() {
       {tab === 'profile' && (
         <div className="space-y-4 animate-fade-in-up">
           {/* Avatar card */}
-          <div className="glass rounded-2xl p-6 flex items-center gap-4">
+          <div className="card-premium rounded-2xl p-6 flex items-center gap-4">
             <div className="relative group flex-shrink-0">
               <Avatar name={profile.full_name} src={profile.avatar_url} size="lg" />
               <button
@@ -202,7 +202,7 @@ export function SettingsPage() {
           </div>
 
           {/* Profile form */}
-          <div className="glass rounded-2xl p-6 space-y-4">
+          <div className="card-premium rounded-2xl p-6 space-y-4">
             <h3 className="font-semibold text-white">Profile Information</h3>
 
             <div>
@@ -257,7 +257,7 @@ export function SettingsPage() {
       {tab === 'organization' && (
         <div className="space-y-4 animate-fade-in-up">
           {/* Current org */}
-          <div className="glass rounded-2xl p-6">
+          <div className="card-premium rounded-2xl p-6">
             <div className="flex items-center gap-4 mb-5">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-500/30 to-emerald-500/30 flex items-center justify-center">
                 <Building2 className="text-teal-300" size={24} />
@@ -299,7 +299,7 @@ export function SettingsPage() {
           </div>
 
           {/* Create new org */}
-          <div className="glass rounded-2xl p-6">
+          <div className="card-premium rounded-2xl p-6">
             <h3 className="font-semibold text-white mb-2">Create New Organization</h3>
             <p className="text-sm text-slate-400 mb-4">Start a new workspace for a different team or project.</p>
             <div className="flex gap-2">
@@ -323,7 +323,7 @@ export function SettingsPage() {
 
       {tab === 'danger' && membership?.role === 'admin' && (
         <div className="space-y-4 animate-fade-in-up">
-          <div className="glass rounded-2xl p-6 border border-rose-500/20">
+          <div className="card-premium rounded-2xl p-6 border border-rose-500/20">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center flex-shrink-0">
                 <AlertTriangle className="text-rose-400" size={20} />
@@ -344,7 +344,7 @@ export function SettingsPage() {
             </div>
           </div>
 
-          <div className="glass rounded-2xl p-6">
+          <div className="card-premium rounded-2xl p-6">
             <h3 className="font-semibold text-white mb-2">Sign Out</h3>
             <p className="text-sm text-slate-400 mb-4">Sign out of your Fluxora account on this device.</p>
             <button

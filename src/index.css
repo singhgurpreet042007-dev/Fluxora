@@ -237,6 +237,11 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary:active {
   transform: translateY(0);
 }
+.btn-primary:disabled {
+  transform: none;
+  box-shadow: none;
+  cursor: not-allowed;
+}
 .btn-ghost {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
@@ -247,17 +252,61 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--border-strong);
 }
 
+/* Keyboard focus states (previously missing app-wide) */
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--accent-glow);
+}
+
 /* Input styles */
 .input-field {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   transition: all 0.2s ease;
 }
-.input-field:focus {
+.input-field:focus,
+.input-field:focus-visible {
   background: rgba(255, 255, 255, 0.05);
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-glow);
   outline: none;
+}
+.input-field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Premium card treatment — reusable across dashboard/list/table cards */
+.card-premium {
+  background: rgba(26, 35, 50, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+}
+.card-premium:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+/* Skeleton loading blocks (uses existing shimmer keyframe) */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  background-size: 1000px 100%;
+  animation: shimmer 1.6s infinite;
 }
 
 /* Stagger animation delays */
@@ -318,6 +367,12 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Smooth transition base */
 .transition-smooth {
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Prevent long unbroken strings (emails, ids) from forcing horizontal overflow on mobile */
+.break-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* Status dots */

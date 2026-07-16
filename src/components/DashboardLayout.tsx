@@ -92,7 +92,9 @@ export function DashboardLayout({ children, currentPage, onNavigate, notificatio
         </button>
 
         {orgMenuOpen && (
-          <div className="absolute top-full left-3 right-3 mt-1 glass-strong rounded-xl shadow-2xl py-2 z-50 animate-scale-in">
+          <>
+            <div className="fixed inset-0 z-40" onClick={() => setOrgMenuOpen(false)} />
+            <div className="absolute top-full left-3 right-3 mt-1 glass-strong rounded-xl shadow-2xl py-2 z-50 animate-scale-in">
             {orgs.map((org) => (
               <button
                 key={org.id}
@@ -116,7 +118,8 @@ export function DashboardLayout({ children, currentPage, onNavigate, notificatio
                 <span className="text-sm">New Organization</span>
               </button>
             </div>
-          </div>
+            </div>
+          </>
         )}
       </div>
 
@@ -161,22 +164,25 @@ export function DashboardLayout({ children, currentPage, onNavigate, notificatio
         </button>
 
         {userMenuOpen && (
-          <div className="absolute bottom-full left-3 right-3 mb-1 glass-strong rounded-xl shadow-2xl py-2 z-50 animate-scale-in">
-            <button
-              onClick={() => { onNavigate('settings'); setUserMenuOpen(false); }}
-              className="w-full flex items-center gap-2 px-3 py-2 hover:bg-white/5 transition-smooth text-slate-300 text-sm"
-            >
-              <Settings size={16} />
-              Settings
-            </button>
-            <button
-              onClick={handleSignOut}
-              className="w-full flex items-center gap-2 px-3 py-2 hover:bg-white/5 transition-smooth text-rose-400 text-sm"
-            >
-              <LogOut size={16} />
-              Sign Out
-            </button>
-          </div>
+          <>
+            <div className="fixed inset-0 z-40" onClick={() => setUserMenuOpen(false)} />
+            <div className="absolute bottom-full left-3 right-3 mb-1 glass-strong rounded-xl shadow-2xl py-2 z-50 animate-scale-in">
+              <button
+                onClick={() => { onNavigate('settings'); setUserMenuOpen(false); }}
+                className="w-full flex items-center gap-2 px-3 py-2 hover:bg-white/5 transition-smooth text-slate-300 text-sm"
+              >
+                <Settings size={16} />
+                Settings
+              </button>
+              <button
+                onClick={handleSignOut}
+                className="w-full flex items-center gap-2 px-3 py-2 hover:bg-white/5 transition-smooth text-rose-400 text-sm"
+              >
+                <LogOut size={16} />
+                Sign Out
+              </button>
+            </div>
+          </>
         )}
       </div>
     </>
@@ -211,6 +217,7 @@ export function DashboardLayout({ children, currentPage, onNavigate, notificatio
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarOpen(true)}
+              aria-label="Open navigation menu"
               className="lg:hidden p-2 rounded-lg hover:bg-white/5 transition-smooth text-slate-400"
             >
               <Menu size={20} />
@@ -226,6 +233,7 @@ export function DashboardLayout({ children, currentPage, onNavigate, notificatio
               onClick={() => setChatOpen(true)}
               className="p-2.5 rounded-xl hover:bg-white/5 transition-smooth text-slate-400 hover:text-white"
               title="Team chat"
+              aria-label="Open team chat"
             >
               <MessageSquare size={18} />
             </button>
@@ -234,6 +242,7 @@ export function DashboardLayout({ children, currentPage, onNavigate, notificatio
             <div className="relative">
               <button
                 onClick={() => setNotifOpen(!notifOpen)}
+                aria-label="View notifications"
                 className="relative p-2.5 rounded-xl hover:bg-white/5 transition-smooth text-slate-400 hover:text-white"
               >
                 <Bell size={18} />
@@ -302,7 +311,11 @@ export function DashboardLayout({ children, currentPage, onNavigate, notificatio
           <div className="relative w-full max-w-md glass-strong rounded-2xl shadow-2xl p-6 animate-scale-in">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold text-white">New Organization</h3>
-              <button onClick={() => setShowCreateOrg(false)} className="text-slate-400 hover:text-white">
+              <button
+                onClick={() => setShowCreateOrg(false)}
+                aria-label="Close dialog"
+                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-white/8 transition-smooth"
+              >
                 <X size={18} />
               </button>
             </div>

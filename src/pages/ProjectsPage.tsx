@@ -139,9 +139,9 @@ export function ProjectsPage() {
       </div>
 
       {projects.length === 0 ? (
-        <div className="glass rounded-2xl p-12 text-center animate-fade-in-up stagger-2">
-          <div className="w-16 h-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-4">
-            <FolderKanban className="text-teal-400" size={32} />
+        <div className="card-premium rounded-2xl p-12 text-center animate-fade-in-up stagger-2">
+          <div className="w-16 h-16 rounded-2xl bg-violet-500/10 flex items-center justify-center mx-auto mb-4">
+            <FolderKanban className="text-violet-400" size={32} />
           </div>
           <h3 className="text-lg font-semibold text-white mb-2">No projects yet</h3>
           <p className="text-slate-400 text-sm mb-6">Create your first project to start organizing tasks</p>
@@ -158,7 +158,7 @@ export function ProjectsPage() {
             return (
               <div
                 key={p.id}
-                className="glass rounded-2xl p-5 card-3d animate-fade-in-up relative group overflow-hidden"
+                className="card-premium rounded-2xl p-5 card-3d animate-fade-in-up relative group overflow-hidden"
                 style={{ animationDelay: `${i * 0.05}s` }}
               >
                 <div className="absolute -right-8 -top-8 w-24 h-24 rounded-full blur-2xl opacity-30" style={{ background: p.color }} />
@@ -245,7 +245,7 @@ export function ProjectsPage() {
                 <button
                   key={s} onClick={() => setStatus(s)}
                   className={`px-3 py-1.5 rounded-lg text-xs capitalize transition-smooth ${
-                    status === s ? 'bg-teal-500/20 text-teal-300 border border-teal-500/30' : 'btn-ghost text-slate-400'
+                    status === s ? 'bg-violet-500/20 text-violet-300 border border-violet-500/30' : 'btn-ghost text-slate-400'
                   }`}
                 >
                   {s}

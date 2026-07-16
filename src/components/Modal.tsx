@@ -40,16 +40,17 @@ export function Modal({ open, onClose, title, children, size = 'md' }: ModalProp
       <div
         className={`relative w-full ${sizes[size]} glass-strong rounded-2xl shadow-2xl animate-scale-in max-h-[90vh] flex flex-col`}
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-white/8">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/8 flex-shrink-0">
           <h3 className="text-lg font-semibold font-display text-white">{title}</h3>
           <button
             onClick={onClose}
+            aria-label="Close dialog"
             className="p-2 rounded-lg hover:bg-white/8 transition-smooth text-slate-400 hover:text-white"
           >
             <X size={18} />
           </button>
         </div>
-        <div className="overflow-y-auto px-6 py-5">{children}</div>
+        <div className="overflow-y-auto px-6 py-5 flex-1 min-h-0">{children}</div>
       </div>
     </div>
   );

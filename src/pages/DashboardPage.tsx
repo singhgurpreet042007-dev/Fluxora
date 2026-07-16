@@ -120,7 +120,7 @@ export function DashboardPage({ onNavigate }: DashboardProps) {
           return (
             <div
               key={card.label}
-              className={`glass rounded-2xl p-4 lg:p-5 card-3d animate-fade-in-up stagger-${i + 1} relative overflow-hidden group`}
+              className={`card-premium rounded-2xl p-4 lg:p-5 card-3d animate-fade-in-up stagger-${i + 1} relative overflow-hidden group`}
             >
               <div className={`absolute -right-4 -top-4 w-20 h-20 rounded-full ${card.bg} blur-2xl group-hover:scale-150 transition-transform duration-700`} />
               <div className="relative">
@@ -139,7 +139,7 @@ export function DashboardPage({ onNavigate }: DashboardProps) {
         {/* Completion ring + projects */}
         <div className="lg:col-span-1 space-y-4">
           {/* Completion progress */}
-          <div className="glass rounded-2xl p-6 animate-fade-in-up stagger-3">
+          <div className="card-premium rounded-2xl p-6 animate-fade-in-up stagger-3">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-semibold text-white">Completion Rate</h3>
               <TrendingUp className="text-teal-400" size={18} />
@@ -184,7 +184,7 @@ export function DashboardPage({ onNavigate }: DashboardProps) {
           </div>
 
           {/* Projects list */}
-          <div className="glass rounded-2xl p-5 animate-fade-in-up stagger-4">
+          <div className="card-premium rounded-2xl p-5 animate-fade-in-up stagger-4">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-semibold text-white">Projects</h3>
               <button onClick={() => onNavigate('projects')} className="text-xs text-teal-400 hover:text-teal-300 flex items-center gap-1">
@@ -225,7 +225,7 @@ export function DashboardPage({ onNavigate }: DashboardProps) {
         {/* My tasks + activity */}
         <div className="lg:col-span-2 space-y-4">
           {/* My tasks */}
-          <div className="glass rounded-2xl p-5 animate-fade-in-up stagger-4">
+          <div className="card-premium rounded-2xl p-5 animate-fade-in-up stagger-4">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-semibold text-white">My Tasks</h3>
               <button onClick={() => onNavigate('tasks')} className="text-xs text-teal-400 hover:text-teal-300 flex items-center gap-1">
@@ -268,7 +268,7 @@ export function DashboardPage({ onNavigate }: DashboardProps) {
           </div>
 
           {/* Activity feed */}
-          <div className="glass rounded-2xl p-5 animate-fade-in-up stagger-5">
+          <div className="card-premium rounded-2xl p-5 animate-fade-in-up stagger-5">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-semibold text-white flex items-center gap-2">
                 <Activity className="text-teal-400" size={18} />
@@ -303,7 +303,7 @@ export function DashboardPage({ onNavigate }: DashboardProps) {
           </div>
 
           {/* Team preview */}
-          <div className="glass rounded-2xl p-5 animate-fade-in-up stagger-6">
+          <div className="card-premium rounded-2xl p-5 animate-fade-in-up stagger-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-semibold text-white">Team</h3>
               <button onClick={() => onNavigate('team')} className="text-xs text-teal-400 hover:text-teal-300 flex items-center gap-1">

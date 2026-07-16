@@ -129,7 +129,21 @@ export function TeamPage() {
         )}
       </div>
 
-      <div className="glass rounded-2xl overflow-hidden animate-fade-in-up stagger-2">
+      {members.length === 0 ? (
+        <div className="card-premium rounded-2xl p-12 text-center animate-fade-in-up stagger-2">
+          <div className="w-16 h-16 rounded-2xl bg-sky-500/10 flex items-center justify-center mx-auto mb-4">
+            <UserPlus className="text-sky-400" size={32} />
+          </div>
+          <h3 className="text-lg font-semibold text-white mb-2">No team members yet</h3>
+          <p className="text-slate-400 text-sm mb-6">Invite teammates to start collaborating</p>
+          {isAdmin && (
+            <button onClick={() => setShowInvite(true)} className="btn-primary px-5 py-2.5 rounded-xl text-sm inline-flex items-center gap-2">
+              <UserPlus size={16} /> Invite Member
+            </button>
+          )}
+        </div>
+      ) : (
+      <div className="card-premium rounded-2xl overflow-hidden animate-fade-in-up stagger-2">
         {members.map((m, i) => {
           const prof = profiles[m.user_id];
           const isYou = m.user_id === user?.id;
@@ -145,7 +159,7 @@ export function TeamPage() {
                   <p className="text-sm font-medium text-white truncate">
                     {prof?.full_name || 'Unknown'}
                   </p>
-                  {isYou && <span className="text-[10px] text-teal-400 bg-teal-500/10 px-1.5 py-0.5 rounded-full">You</span>}
+                  {isYou && <span className="text-[10px] text-sky-400 bg-sky-500/10 px-1.5 py-0.5 rounded-full">You</span>}
                   {m.role === 'admin' && (
                     <span className="text-[10px] text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded-full flex items-center gap-1">
                       <Crown size={10} /> Admin
@@ -191,6 +205,7 @@ export function TeamPage() {
           );
         })}
       </div>
+      )}
 
       {/* Invite modal */}
       <Modal open={showInvite} onClose={() => { setShowInvite(false); setInviteLink(''); setInviteEmail(''); }} title="Invite Team Member">
@@ -219,7 +234,7 @@ export function TeamPage() {
                 <button
                   key={r} onClick={() => setInviteRole(r)}
                   className={`flex-1 px-3 py-2.5 rounded-xl text-sm capitalize transition-smooth ${
-                    inviteRole === r ? 'bg-teal-500/20 text-teal-300 border border-teal-500/30' : 'btn-ghost text-slate-400'
+                    inviteRole === r ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30' : 'btn-ghost text-slate-400'
                   }`}
                 >
                   {r === 'admin' && <Crown size={14} className="inline mr-1" />}

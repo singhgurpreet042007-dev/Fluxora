@@ -19,41 +19,65 @@ function AppContent() {
   const { user, loading: authLoading } = useAuth();
   const { currentOrg, loading: orgLoading } = useOrg();
   const { show } = useToast();
+
   const [page, setPage] = useState<Page>('dashboard');
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
   // Load notifications
   useEffect(() => {
     if (!user) return;
+
     supabase
       .from('notifications')
       .select('*')
       .eq('user_id', user.id)
       .order('created_at', { ascending: false })
       .limit(20)
-      .then(({ data }) => setNotifications((data as Notification[]) || []));
+      .then(({ data }) => {
+        setNotifications((data as Notification[]) || []);
+      });
   }, [user]);
 
   // Real-time notifications
   useEffect(() => {
     if (!user) return;
+
     const channel = supabase
       .channel('notifications-realtime')
-      .on('postgres_changes',
-        { event: 'INSERT', schema: 'public', table: 'notifications', filter: `user_id=eq.${user.id}` },
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'notifications',
+          filter: `user_id=eq.${user.id}`,
+        },
         (payload) => {
           const newNotif = payload.new as Notification;
+
           setNotifications((prev) => [newNotif, ...prev].slice(0, 20));
+
           show('info', newNotif.title, newNotif.message);
         }
       )
       .subscribe();
-    return () => { supabase.removeChannel(channel); };
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [user, show]);
 
   const handleMarkNotifRead = async (id: string) => {
-    setNotifications((prev) => prev.map((n) => n.id === id ? { ...n, read: true } : n));
-    await supabase.from('notifications').update({ read: true }).eq('id', id);
+    setNotifications((prev) =>
+      prev.map((n) =>
+        n.id === id ? { ...n, read: true } : n
+      )
+    );
+
+    await supabase
+      .from('notifications')
+      .update({ read: true })
+      .eq('id', id);
   };
 
   if (authLoading || (user && orgLoading)) {
@@ -70,13 +94,26 @@ function AppContent() {
 
   const renderPage = () => {
     switch (page) {
-      case 'dashboard': return <DashboardPage onNavigate={setPage} />;
-      case 'projects': return <ProjectsPage />;
-      case 'tasks': return <TasksPage />;
-      case 'team': return <TeamPage />;
-      case 'activity': return <ActivityPage />;
-      case 'settings': return <SettingsPage />;
-      default: return <DashboardPage onNavigate={setPage} />;
+      case 'dashboard':
+        return <DashboardPage onNavigate={setPage} />;
+
+      case 'projects':
+        return <ProjectsPage />;
+
+      case 'tasks':
+        return <TasksPage />;
+
+      case 'team':
+        return <TeamPage />;
+
+      case 'activity':
+        return <ActivityPage />;
+
+      case 'settings':
+        return <SettingsPage />;
+
+      default:
+        return <DashboardPage onNavigate={setPage} />;
     }
   };
 
