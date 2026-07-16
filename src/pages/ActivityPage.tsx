@@ -80,7 +80,7 @@ export function ActivityPage() {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 animate-fade-in-up">
         <div>
           <h1 className="text-2xl font-bold text-white font-display flex items-center gap-2">
-            <Activity className="text-amber-400" size={24} />
+            <Activity className="text-teal-400" size={24} />
             Activity Log
           </h1>
           <p className="text-slate-400 text-sm mt-1">Real-time audit trail for {currentOrg?.name}</p>
@@ -94,7 +94,7 @@ export function ActivityPage() {
           <button
             key={t} onClick={() => setFilter(t)}
             className={`px-3 py-1.5 rounded-lg text-xs capitalize transition-smooth ${
-              filter === t ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30' : 'btn-ghost text-slate-400'
+              filter === t ? 'bg-teal-500/20 text-teal-300 border border-teal-500/30' : 'btn-ghost text-slate-400'
             }`}
           >
             {t === 'all' ? 'All' : t}
@@ -103,9 +103,9 @@ export function ActivityPage() {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="card-premium rounded-2xl p-12 text-center animate-fade-in-up stagger-2">
-          <div className="w-16 h-16 rounded-2xl bg-amber-500/10 flex items-center justify-center mx-auto mb-4">
-            <Activity className="text-amber-400" size={32} />
+        <div className="glass rounded-2xl p-12 text-center animate-fade-in-up stagger-2">
+          <div className="w-16 h-16 rounded-2xl bg-teal-500/10 flex items-center justify-center mx-auto mb-4">
+            <Activity className="text-teal-400" size={32} />
           </div>
           <h3 className="text-lg font-semibold text-white mb-2">No activity yet</h3>
           <p className="text-slate-400 text-sm">Actions across your workspace will appear here in real-time</p>
@@ -113,7 +113,7 @@ export function ActivityPage() {
       ) : (
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/30 via-white/8 to-transparent" />
+          <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-teal-500/30 via-white/8 to-transparent" />
 
           <div className="space-y-1">
             {filtered.map((act, i) => {

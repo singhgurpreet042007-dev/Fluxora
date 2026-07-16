@@ -87,28 +87,39 @@ export function OrgProvider({ children }: { children: ReactNode }) {
     }
   }, [user]);
 
-  const createOrg = useCallback(async (name: string) => {
-    if (!user) return { error: 'Not authenticated', org: null };
-    const slug = slugify(name);
-    const { data: org, error } = await supabase
-      .from('organizations')
-      .insert({ name, slug })
-      .select('*')
-      .single();
+const createOrg = useCallback(async (name: string) => {
+  if (!user) return { error: 'Not authenticated', org: null };
 
-    if (error || !org) return { error: error?.message ?? 'Failed to create', org: null };
+  const slug = slugify(name);
 
-    const { error: memError } = await supabase
-      .from('organization_members')
-      .insert({ organization_id: org.id, user_id: user.id, role: 'admin' });
+  const { data: org, error } = await supabase
+    .from('organizations')
+    .insert({
+      name,
+      slug,
+      owner_id: user.id
+    })
+    .select('*')
+    .single();
 
-    if (memError) return { error: memError.message, org: null };
+  if (error || !org) {
+    return { 
+      error: error?.message ?? 'Failed to create', 
+      org: null 
+    };
+  }
 
-    const newOrg = org as Org;
-    await fetchOrgs();
-    setCurrentOrg(newOrg);
-    return { error: null, org: newOrg };
-  }, [user, fetchOrgs, setCurrentOrg]);
+  const newOrg = org as Org;
+
+  await fetchOrgs();
+  setCurrentOrg(newOrg);
+
+  return { 
+    error: null, 
+    org: newOrg 
+  };
+
+}, [user, fetchOrgs, setCurrentOrg]);
 
   const getInviteByToken = useCallback(async (token: string) => {
     const { data, error } = await supabase
