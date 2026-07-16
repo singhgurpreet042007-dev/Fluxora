@@ -96,6 +96,10 @@ VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 <img width="1918" height="894" alt="Screenshot 2026-07-16 140055" src="https://github.com/user-attachments/assets/5fdb60b3-ecbf-493a-a690-8cb6d2bea1e5" />
 
+<img width="1919" height="908" alt="Screenshot 2026-07-16 141350" src="https://github.com/user-attachments/assets/61ad9b49-975a-49ef-a7bd-8fa6ffe1f128" />
+
+<img width="1899" height="889" alt="Screenshot 2026-07-16 141456" src="https://github.com/user-attachments/assets/279d0573-af46-42fa-ab7a-b87c3b83eeec" />
+
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to fork the repository, open issues, or submit pull requests.
