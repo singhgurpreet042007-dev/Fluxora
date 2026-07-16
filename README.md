@@ -1,5 +1,3 @@
-![Uploading Screenshot 2026-07-16 140055.png…]()
-
 # 🚀 Fluxora
 
 **Fluxora** is a modern team collaboration and project management platform built to help teams organize projects, manage tasks, collaborate efficiently, and track progress in real time.
@@ -95,6 +93,8 @@ VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 ## 📸 Screenshots
 
 <img width="1907" height="903" alt="Screenshot 2026-07-16 132610" src="https://github.com/user-attachments/assets/6c221979-d0fc-40bd-951b-5b0e4bb64ebf" />
+
+<img width="1918" height="894" alt="Screenshot 2026-07-16 140055" src="https://github.com/user-attachments/assets/5fdb60b3-ecbf-493a-a690-8cb6d2bea1e5" />
 
 ## 🤝 Contributing
 
